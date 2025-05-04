@@ -4,6 +4,8 @@
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/
  */
 
+const path = require('path');
+
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
@@ -16,3 +18,14 @@ exports.createPages = async ({ actions }) => {
     defer: true,
   })
 }
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  console.log('Styled-components resolved path:', require.resolve('styled-components'));
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        'styled-components': require.resolve('styled-components'),
+      },
+    },
+  });
+};

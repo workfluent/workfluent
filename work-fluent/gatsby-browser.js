@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import GlobalStyle from "./src/styles/global";
-
-// Note: If the build fails to fetch cached dependencies, try the following steps:
-// 1. Run `gatsby clean` to clear the cache.
-// 2. Reinstall dependencies using `npm install` or `yarn install`.
-// 3. Rebuild the project with `gatsby build`.
+import GlobalStyles from "./src/styles/global"; // Corrected path
 
 const lightTheme = {
   mode: "light",
@@ -26,7 +21,7 @@ const WrapRootElement = ({ element }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
+      <GlobalStyles />
       <button onClick={toggleTheme} style={{ position: "fixed", top: 10, right: 10 }}>
         Toggle Theme
       </button>

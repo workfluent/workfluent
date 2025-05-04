@@ -12,8 +12,10 @@ export default function HTML(props) {
         {/* ...existing code... */}
       </head>
       <body {...props.bodyAttributes}>
-        {/* ...existing code... */}
+        <div id="root" dangerouslySetInnerHTML={{ __html: props.body }} />
+        {props.children}
       </body>
     </html>
   );
 }
+
