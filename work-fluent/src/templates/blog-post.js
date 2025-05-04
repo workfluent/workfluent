@@ -1,4 +1,5 @@
-import { graphql } from "gatsby";
+import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 
 const PostContainer = styled.article`
@@ -8,20 +9,8 @@ const PostContainer = styled.article`
   font-family: 'Inter', sans-serif;
 `;
 
-export const query = graphql`
-  query($slug: String!) {
-    contentfulInquiry(slug: { eq: $slug }) {
-      title
-      publishDate(formatString: "MMMM D, YYYY")
-      body {
-        raw
-      }
-    }
-  }
-`;
-
-export default function BlogPost({ data }) {
-  const post = data.contentfulInquiry;
+const BlogPost = ({ data }) => {
+  const post = data.contentfulBlogPost;
   return (
     <PostContainer>
       <h1>{post.title}</h1>
@@ -29,4 +18,25 @@ export default function BlogPost({ data }) {
       <div dangerouslySetInnerHTML={{ __html: post.body.raw }} />
     </PostContainer>
   );
-}
+};
+
+// Use useStaticQuery to fetch data
+const query = graphql`
+  query BlogPostQuery {
+    allContentfulBlogPost {
+      nodes {
+        title
+        body {
+          raw
+        }
+      }
+    }
+  }
+`;
+
+export const BlogPostWithQuery = () => {
+  const data = useStaticQuery(query);
+  return <BlogPost data={data} />;
+};
+
+export default BlogPostWithQuery;

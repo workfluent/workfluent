@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./src/styles/global";
+
+// Note: If the build fails to fetch cached dependencies, try the following steps:
+// 1. Run `gatsby clean` to clear the cache.
+// 2. Reinstall dependencies using `npm install` or `yarn install`.
+// 3. Rebuild the project with `gatsby build`.
 
 const lightTheme = {
   mode: "light",
@@ -10,8 +15,8 @@ const darkTheme = {
   mode: "dark",
 };
 
-export const wrapRootElement = ({ element }) => {
-  const [theme, setTheme] = React.useState(lightTheme);
+const WrapRootElement = ({ element }) => {
+  const [theme, setTheme] = useState(lightTheme);
 
   const toggleTheme = () => {
     setTheme((prevTheme) =>
@@ -28,4 +33,8 @@ export const wrapRootElement = ({ element }) => {
       {element}
     </ThemeProvider>
   );
+};
+
+export const wrapRootElement = ({ element }) => {
+  return <WrapRootElement element={element} />;
 };
