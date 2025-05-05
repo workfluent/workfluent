@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { ThemeProvider } from "styled-components";
-import GlobalStyles from "./src/styles/global"; // Corrected path
+import GlobalStyles from "./src/styles/global";
 
 const lightTheme = {
   mode: "light",
@@ -11,20 +11,9 @@ const darkTheme = {
 };
 
 const WrapRootElement = ({ element }) => {
-  const [theme, setTheme] = useState(lightTheme);
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) =>
-      prevTheme.mode === "light" ? darkTheme : lightTheme
-    );
-  };
-
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={lightTheme}>
       <GlobalStyles />
-      <button onClick={toggleTheme} style={{ position: "fixed", top: 10, right: 10 }}>
-        Toggle Theme
-      </button>
       {element}
     </ThemeProvider>
   );

@@ -1,129 +1,108 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import * as React from "react";
+import Starfield from "react-starfield";
+import Navbar from "../components/Navbar";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import * as styles from "../components/index.module.css"
+const IndexPage = () => {
+  const steps = [
+    "We analyse your business data",
+    "We create solutions",
+    "Performance follow-up",
+  ]; // Updated steps
 
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-  },
-  {
-    text: "Examples",
-    url: "https://github.com/gatsbyjs/gatsby/tree/master/examples",
-    description:
-      "A collection of websites ranging from very basic to complex/complete that illustrate how to accomplish specific tasks within your Gatsby sites.",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Learn how to add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-  },
-]
-
-const samplePageLinks = [
-  {
-    text: "Page 2",
-    url: "page-2",
-    badge: false,
-    description:
-      "A simple example of linking to another page within a Gatsby site",
-  },
-  { text: "TypeScript", url: "using-typescript" },
-  { text: "Server Side Rendering", url: "using-ssr" },
-  { text: "Deferred Static Generation", url: "using-dsg" },
-]
-
-const moreLinks = [
-  { text: "Join us on Discord", url: "https://gatsby.dev/discord" },
-  {
-    text: "Documentation",
-    url: "https://gatsbyjs.com/docs/",
-  },
-  {
-    text: "Starters",
-    url: "https://gatsbyjs.com/starters/",
-  },
-  {
-    text: "Showcase",
-    url: "https://gatsbyjs.com/showcase/",
-  },
-  {
-    text: "Contributing",
-    url: "https://www.gatsbyjs.com/contributing/",
-  },
-  { text: "Issues", url: "https://github.com/gatsbyjs/gatsby/issues" },
-]
-
-const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
-
-const IndexPage = () => (
-  <Layout>
-    <div className={styles.textCenter}>
-      <StaticImage
-        src="../images/example.png"
-        loading="eager"
-        width={64}
-        quality={95}
-        formats={["auto", "webp", "avif"]}
-        alt=""
-        style={{ marginBottom: `var(--space-3)` }}
+  return (
+    <div
+      style={{
+        fontFamily: "Arial, sans-serif",
+        position: "relative",
+        minHeight: "100vh",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      {/* Starfield Background */}
+      <Starfield
+        starCount={1000}
+        starColor={[255, 255, 255]}
+        speedFactor={0.05}
+        backgroundColor="black"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: -1,
+        }}
       />
-      <h1>
-        Welcome to <b>Gatsby!</b>
-      </h1>
-      <p className={styles.intro}>
-        <b>Example pages:</b>{" "}
-        {samplePageLinks.map((link, i) => (
-          <React.Fragment key={link.url}>
-            <Link to={link.url}>{link.text}</Link>
-            {i !== samplePageLinks.length - 1 && <> · </>}
-          </React.Fragment>
-        ))}
-        <br />
-        Edit <code>src/pages/index.js</code> to update this page.
-      </p>
+
+      {/* Navbar */}
+      <Navbar />
+
+      {/* Div1 */}
+      <div id="div1" style={{ width: "100%", padding: "20px", color: "#fff", textAlign: "center" }}>
+        <h1>Welcome to Work Fluent</h1>
+        <p>Your productivity companion.</p>
+      </div>
+
+      {/* Div2 */}
+      <div id="div2" style={{ width: "100%", padding: "20px", color: "#fff", textAlign: "center" }}>
+        <h2>Features</h2>
+        <p>Explore the amazing features we offer to boost your workflow.</p>
+      </div>
+
+      {/* Div3 */}
+      <div id="div3" style={{ width: "100%", padding: "20px", color: "#fff", textAlign: "center" }}>
+        <h2>About Us</h2>
+        <p>Learn more about our mission and values.</p>
+        {/* Stepper Component */}
+        <div style={{ margin: "20px auto", maxWidth: "600px" }}>
+          <Stepper activeStep={1} alternativeLabel>
+            <Step>
+              <StepLabel>We analyse your business data</StepLabel>
+            </Step>
+            <Step>
+              <StepLabel>We create solutions</StepLabel>
+            </Step>
+            <Step>
+              <StepLabel>Performance follow-up</StepLabel>
+            </Step>
+          </Stepper>
+        </div>
+      </div>
+
+      {/* Div4 */}
+      <div id="div4" style={{ width: "100%", padding: "20px", color: "#fff", textAlign: "center" }}>
+        <h2>Contact</h2>
+        <p>Get in touch with us for more information.</p>
+        {/* Here goes the form */}
+      </div>
+
+      {/* Footer */}
+      <footer
+        style={{
+          padding: "10px 20px",
+          backgroundColor: "transparent",
+          color: "#fff",
+          textAlign: "center",
+          marginTop: "auto",
+        }}
+      >
+        <p>&copy; {new Date().getFullYear()} Work Fluent. All rights reserved.</p>
+      </footer>
     </div>
-    <ul className={styles.list}>
-      {links.map(link => (
-        <li key={link.url} className={styles.listItem}>
-          <a
-            className={styles.listItemLink}
-            href={`${link.url}${utmParameters}`}
-          >
-            {link.text} ↗
-          </a>
-          <p className={styles.listItemDescription}>{link.description}</p>
-        </li>
-      ))}
-    </ul>
-    {moreLinks.map((link, i) => (
-      <React.Fragment key={link.url}>
-        <a href={`${link.url}${utmParameters}`}>{link.text}</a>
-        {i !== moreLinks.length - 1 && <> · </>}
-      </React.Fragment>
-    ))}
-  </Layout>
-)
+  );
+};
 
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
-export const Head = () => <Seo title="Home" />
+export const Head = () => (
+  <>
+    <title>Homepage</title>
+    <meta name="description" content="Welcome to the homepage of the Work Fluent project." />
+  </>
+);
 
-export default IndexPage
+export default IndexPage;
 

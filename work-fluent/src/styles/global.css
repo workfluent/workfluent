@@ -26,8 +26,8 @@ body {
     font-family: var(--font-sans);
     font-weight: 400;
     line-height: 1.6;
-    color: black; /* Replace with a static color or use a CSS variable */
-    background: white; /* Replace with a static color or use a CSS variable */
+    background-color: black; /* Ensure the background is black */
+    color: white; /* Ensure text color is white */
     transition: background 0.3s ease, color 0.3s ease;
 }
 
@@ -43,18 +43,11 @@ h3 { font-size: var(--text-2xl); }
 h4 { font-size: var(--text-xl); }
 
 a {
-    color: blue; /* Replace with a static color or use a CSS variable */
+    color: rgb(241, 237, 237); /* Match your custom link color */
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 a:hover {
-    color: red; /* Replace with a static color or use a CSS variable */
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem; /* Replace with a static value or use a CSS variable */
+    color: #f2f5f9; /* Match your custom hover color */
 }
