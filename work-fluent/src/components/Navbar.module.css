@@ -67,6 +67,20 @@
   background-color: #0056b3;
 }
 
+.navButton {
+  padding: 0.25rem 0.5rem; /* Reduced padding */
+  background: #ff007a; /* Candy pink */
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px; /* Smaller font size */
+  transition: transform 0.2s;
+}
+
+.navButton:hover {
+  transform: scale(1.05);
+}
+
 @media (max-width: 768px) {
   .hamburger {
     display: block;
