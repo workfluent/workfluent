@@ -10,3 +10,74 @@ body {
   margin: 0 auto;
   padding: 1rem;
 }
+
+#div1 {
+  width: 100%; /* Ensure it spans the full width */
+  height: 100vh; /* Make it take up the full viewport height */
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  text-align: center; /* Center text inside the div */
+  background-color: transparent; /* Make background transparent */
+  color: #fff; /* Ensure text color is white */
+}
+
+#div1 h1 {
+  font-size: 2.5rem; /* Increase font size */
+}
+
+#div2 {
+  width: 100%; /* Ensure it spans the full width */
+  height: 100vh; /* Make it take up the full viewport height */
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  text-align: center; /* Center text inside the div */
+  background-color: transparent; /* Make background transparent */
+  color: #fff; /* Ensure text color is white */
+}
+
+#div3 {
+  width: 100%; /* Ensure it spans the full width */
+  height: 100vh; /* Make it take up the full viewport height */
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  text-align: center; /* Center text inside the div */
+  background-color: transparent; /* Make background transparent */
+  color: #fff; /* Ensure text color is white */
+}
+
+#div4 {
+  width: 100%; /* Ensure it spans the full width */
+  height: 100vh; /* Make it take up the full viewport height */
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  text-align: center; /* Center text inside the div */
+  background-color: transparent; /* Make background transparent */
+  color: #fff; /* Ensure text color is white */
+}
+
+#divContainer {
+  margin-bottom: 5%; /* Add margin at the bottom */
+}
+
+.trusted-text {
+  display: inline-block;
+  background: transparent;
+  background-image: linear-gradient(to right, pink, yellow, blue);
+  -webkit-background-clip: text;
+  color: transparent;
+  padding: 0.5rem 0.25rem;
+  font-size: 8pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@media (min-width: 1024px) {
+  .trusted-text .hidden {
+    display: inline;
+  }
+}

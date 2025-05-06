@@ -44,40 +44,37 @@ const IndexPage = () => {
 
       {/* Div1 */}
       <div id="div1" style={{ width: "100%", padding: "20px", color: "#fff", textAlign: "center" }}>
-        <h1>Welcome to Work Fluent</h1>
-        <p>Your productivity companion.</p>
+        <div id="divContainer">
+          <h1>Drive your business automatic with us here at WorkFluent</h1>
+          <p></p>
+          <span className="trusted-text">
+            Trusted by startups<span className="hidden l:inline"> and enterprises </span> backed by
+          </span>
+          <span className="trusted-logos"></span>
+        </div>
       </div>
 
       {/* Div2 */}
       <div id="div2" style={{ width: "100%", padding: "20px", color: "#fff", textAlign: "center" }}>
-        <h2>Features</h2>
-        <p>Explore the amazing features we offer to boost your workflow.</p>
+        <h2></h2>
+        <p></p>
       </div>
 
       {/* Div3 */}
       <div id="div3" style={{ width: "100%", padding: "20px", color: "#fff", textAlign: "center" }}>
-        <h2>About Us</h2>
-        <p>Learn more about our mission and values.</p>
+        <h2></h2>
+        <p></p>
         {/* Stepper Component */}
         <div style={{ margin: "20px auto", maxWidth: "600px" }}>
-          <Stepper activeStep={1} alternativeLabel>
-            <Step>
-              <StepLabel>We analyse your business data</StepLabel>
-            </Step>
-            <Step>
-              <StepLabel>We create solutions</StepLabel>
-            </Step>
-            <Step>
-              <StepLabel>Performance follow-up</StepLabel>
-            </Step>
-          </Stepper>
+          
+          
         </div>
       </div>
 
       {/* Div4 */}
       <div id="div4" style={{ width: "100%", padding: "20px", color: "#fff", textAlign: "center" }}>
-        <h2>Contact</h2>
-        <p>Get in touch with us for more information.</p>
+        <h2></h2>
+        <p></p>
         {/* Here goes the form */}
       </div>
 

@@ -4,11 +4,12 @@
   align-items: center;
   width: 100%;
   padding: 16px 40px;
-  background-color: transparent; /* Make background transparent */
   backdrop-filter: none; /* Remove blur effect */
   position: sticky;
   top: 0;
   z-index: 1000;
+  border: 1px solid #1c1b1b;
+  background-color: #000306;
 }
 
 .logoPlaceholder {
@@ -34,6 +35,7 @@
   justify-content: center;
   align-items: center;
   width: 100%; /* Ensure it spans the full width */
+  margin-top:2%;
 }
 
 .navLinks {
@@ -41,6 +43,7 @@
   justify-content: center;
   gap: 16px; /* Add gap between links */
   margin-right: 6%; /* Add 6% margin to the right */
+  margin-bottom:1.5%;
 }
 
 .navLink {
@@ -68,17 +71,45 @@
 }
 
 .navButton {
-  padding: 0.25rem 0.5rem; /* Reduced padding */
-  background: #ff007a; /* Candy pink */
-  color: #fff;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 14px; /* Smaller font size */
-  transition: transform 0.2s;
+  display: inline-block; /* Ensure it behaves like an inline-block element */
+  font-family: "Sohne", sans-serif; /* Use the specified font */
+  font-size: 9pt; /* Match the provided font size */
+  font-weight: 600; /* Make the font semi-bold */
+  padding: 0.25rem 0.5rem; /* Match the provided padding */
+  background: #1a1a1a; /* Dark gray background */
+  color: #b3b3b3; /* Light gray text color */
+  border-radius: 12px; /* Rounded corners for squircle effect */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
 }
 
 .navButton:hover {
+  color: rgba(0, 0, 0, 0.8); /* Darker text on hover */
+  background: #ff007a; /* Pink background on hover */
+}
+
+.navButton:nth-child(1):hover {
+  background: #ff007a; /* Candy pink */
   transform: scale(1.05);
+  color: white; /* Ensure text color remains white */
+}
+
+.navButton:nth-child(2):hover {
+  background: #007BFF; /* Bright blue */
+  transform: scale(1.05);
+  color: white; /* Ensure text color remains white */
+}
+
+.navButton:nth-child(3):hover {
+  background: #28a745; /* Green */
+  transform: scale(1.05);
+  color: white; /* Ensure text color remains white */
+}
+
+.navButton:nth-child(4):hover {
+  background: #ffc107; /* Yellow */
+  transform: scale(1.05);
+  color: white; /* Ensure text color remains white */
 }
 
 @media (max-width: 768px) {
