@@ -81,3 +81,29 @@ body {
     display: inline;
   }
 }
+
+.rowAndColumnSpacing {
+  width: 100%;
+}
+
+.rowAndColumnSpacing .gridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Ensure 4 boxes per row */
+  gap: 16px; /* Add spacing between grid items */
+}
+
+.rowAndColumnSpacing .gridItem {
+  background-color: #fff;
+  padding: 16px;
+  text-align: center;
+  color: #6b7280; /* Tailwind's gray-500 equivalent */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .rowAndColumnSpacing .gridItem {
+    background-color: #1A2027; /* Dark mode background */
+    color: #d1d5db; /* Tailwind's gray-300 equivalent */
+  }
+}
