@@ -15,7 +15,7 @@ module.exports = {
     description: `A Gatsby project.`,
     author: `@gatsbyjs`,
   },
-  pathPrefix: "/workfluent", // Ensure this matches your GitHub repository name
+  pathPrefix: "/workfluent", // Ensure this matches your GitHub repository namey name if different
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
@@ -29,5 +29,6 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "undefined", // Use environment variable
       },
     },
+    `gatsby-plugin-github-pages`, // Correctly add this plugin
   ],
 };
