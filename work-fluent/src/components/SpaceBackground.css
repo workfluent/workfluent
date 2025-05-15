@@ -39,12 +39,3 @@
     transform: translateY(-100%);
   }
 }
-
-@keyframes move-clouds-back {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
