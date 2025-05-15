@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgatsby_starter_default=self.webpackChunkgatsby_starter_default||[]).push([[70],{2010:function(e,t,n){n.r(t);var l=n(6540);t.default=()=>"undefined"==typeof window?l.createElement("div",null,l.createElement("h1",null,"404: Not Found"),l.createElement("p",null,"This page could not be found.")):l.createElement("div",null,l.createElement("h1",null,"404: Not Found"),l.createElement("p",null,"You just hit a route that doesn't exist... the sadness."))}}]);
+//# sourceMappingURL=component---src-pages-404-lazy-js-50bf3ab8574a291a1ca1.js.map
