@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Starfield from "react-starfield";
 import Navbar from "../components/Navbar";
 import "../components/layout.css"; // Import layout styles
@@ -24,18 +24,11 @@ const icon = (
 );
 
 const RowAndColumnSpacing = () => {
-  const [isVisible, setIsVisible] = React.useState(false);
   const containerRef = React.useRef(null);
 
   React.useEffect(() => {
     const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      // ...existing code...
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -45,34 +38,19 @@ const RowAndColumnSpacing = () => {
   return (
     <div className="rowAndColumnSpacing" ref={containerRef}>
       <div className="gridContainer">
-        <Zoom in={isVisible}>{icon}</Zoom>
-        <Zoom in={isVisible} style={{ transitionDelay: isVisible ? "100ms" : "0ms" }}>
-          {icon}
-        </Zoom>
-        <Zoom in={isVisible} style={{ transitionDelay: isVisible ? "200ms" : "0ms" }}>
-          {icon}
-        </Zoom>
-        <Zoom in={isVisible} style={{ transitionDelay: isVisible ? "300ms" : "0ms" }}>
-          {icon}
-        </Zoom>
-        <Zoom in={isVisible} style={{ transitionDelay: isVisible ? "400ms" : "0ms" }}>
-          {icon}
-        </Zoom>
-        <Zoom in={isVisible} style={{ transitionDelay: isVisible ? "500ms" : "0ms" }}>
-          {icon}
-        </Zoom>
-        <Zoom in={isVisible} style={{ transitionDelay: isVisible ? "600ms" : "0ms" }}>
-          {icon}
-        </Zoom>
-        <Zoom in={isVisible} style={{ transitionDelay: isVisible ? "700ms" : "0ms" }}>
-          {icon}
-        </Zoom>
+        {/* Removed interactive cards */}
       </div>
     </div>
   );
 };
 
 const IndexPage = () => {
+  const [isBrowser, setIsBrowser] = useState(false);
+
+  useEffect(() => {
+    setIsBrowser(typeof window !== "undefined");
+  }, []);
+
   const steps = [
     "We analyse your business data",
     "We create solutions",
@@ -94,20 +72,22 @@ const IndexPage = () => {
       <SpaceBackground />
 
       {/* Starfield Background */}
-      <Starfield
-        starCount={1000}
-        starColor={[255, 255, 255]}
-        speedFactor={0.05}
-        backgroundColor="black"
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: -1,
-        }}
-      />
+      {isBrowser && (
+        <Starfield
+          starCount={1000}
+          starColor={[255, 255, 255]}
+          speedFactor={0.05}
+          backgroundColor="black"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: -1,
+          }}
+        />
+      )}
 
       {/* Navbar */}
       <Navbar />

@@ -17,11 +17,11 @@ module.exports = {
   },
   pathPrefix: "/workfluent", // Ensure this matches your GitHub repository namey name if different
   plugins: [
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-postcss`, // Ensure PostCSS plugin is included for Tailwind CSS
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-contentful`,
       options: {

@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./SpaceBackground.css"; // Ensure the CSS file is imported
 
 const SpaceBackground = () => {
+  const [isBrowser, setIsBrowser] = useState(false);
+
+  useEffect(() => {
+    setIsBrowser(typeof window !== "undefined");
+  }, []);
+
   return (
-    <div className="space-background">
-      <div className="stars"></div>
-      <div className="twinkling"></div>
-      <div className="clouds"></div>
-    </div>
+    isBrowser && (
+      <div className="space-background">
+        <div className="stars"></div>
+        <div className="twinkling"></div>
+        <div className="clouds"></div>
+      </div>
+    )
   );
 };
 
