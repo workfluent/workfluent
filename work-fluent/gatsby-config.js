@@ -30,5 +30,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-github-pages`, // Correctly add this plugin
+    `gatsby-plugin-portal`, // Add this plugin for client-side rendering
   ],
 };
