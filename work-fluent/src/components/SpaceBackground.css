@@ -11,14 +11,14 @@
 .stars {
   width: 100%;
   height: 100%;
-  background: url('/workfluent/static/stars.png') repeat;
+  background: url('/static/stars.png') repeat; /* Updated to absolute path */
   z-index: 1;
 }
 
 .twinkling {
   width: 100%;
   height: 100%;
-  background: url('/workfluent/static/twinkling.png') repeat;
+  background: url('/static/twinkling.png') repeat; /* Updated to absolute path */
   animation: move-twink-back 200s linear infinite;
   z-index: 2;
 }
@@ -26,7 +26,7 @@
 .clouds {
   width: 100%;
   height: 100%;
-  background: url('/workfluent/static/clouds.png') repeat;
+  background: url('/static/clouds.png') repeat; /* Updated to absolute path */
   animation: move-clouds-back 200s linear infinite;
   z-index: 3;
 }
