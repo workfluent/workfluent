@@ -29,3 +29,18 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     },
   });
 };
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { deletePage, createPage } = actions;
+
+  if (page.path === "/404.html") {
+    deletePage(page);
+    createPage({
+      ...page,
+      component: path.resolve('./src/pages/404-lazy.js'), // Use a compatible 404 page
+      context: {
+        ...page.context,
+      },
+    });
+  }
+};
