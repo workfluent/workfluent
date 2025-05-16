@@ -15,7 +15,7 @@ module.exports = {
     description: `A Gatsby project.`,
     author: `@gatsbyjs`,
   },
-  pathPrefix: "/workfluent", // Ensure this matches your GitHub repository namey name if different
+  pathPrefix: "/workfluent", // Ensure this matches your GitHub repository name
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-image`,
