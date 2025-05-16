@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import NoSSR from "../components/NoSSR"; // Import NoSSR component
 import Starfield from "react-starfield";
 import Navbar from "../components/Navbar";
 import "../components/layout.css"; // Import layout styles
@@ -72,7 +73,7 @@ const IndexPage = () => {
       <SpaceBackground />
 
       {/* Starfield Background */}
-      {isBrowser && (
+      <NoSSR>
         <Starfield
           starCount={1000}
           starColor={[255, 255, 255]}
@@ -87,7 +88,7 @@ const IndexPage = () => {
             zIndex: -1,
           }}
         />
-      )}
+      </NoSSR>
 
       {/* Navbar */}
       <Navbar />
