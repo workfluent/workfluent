@@ -13,7 +13,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url('/stars.png') repeat; /* Ensure assets are in the static folder */
+  background: url('/workfluent/stars.png') repeat; /* Include pathPrefix */
   z-index: 1;
 }
 
@@ -21,7 +21,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url('/twinkling.png') repeat;
+  background: url('/workfluent/twinkling.png') repeat; /* Include pathPrefix */
   animation: move-twink-back 200s linear infinite;
   z-index: 2;
 }
@@ -30,7 +30,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url('/clouds.png') repeat;
+  background: url('/workfluent/clouds.png') repeat; /* Include pathPrefix */
   animation: move-clouds-back 200s linear infinite;
   z-index: 3;
 }
