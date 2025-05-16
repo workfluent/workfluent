@@ -18,7 +18,6 @@ module.exports = {
   pathPrefix: "/workfluent", // Ensure this matches your GitHub repository namey name if different
   plugins: [
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-postcss`, // Ensure PostCSS plugin is included for Tailwind CSS
@@ -30,6 +29,5 @@ module.exports = {
       },
     },
     `gatsby-plugin-github-pages`, // Correctly add this plugin
-    `gatsby-plugin-portal`, // Add this plugin for client-side rendering
   ],
 };
