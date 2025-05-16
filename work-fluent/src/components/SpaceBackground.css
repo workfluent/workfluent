@@ -13,7 +13,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url('/workfluent/stars.png') repeat; /* Include pathPrefix */
+  background: url('/workfluent/stars.png') repeat; /* Ensure pathPrefix is included */
   z-index: 1;
 }
 
@@ -21,7 +21,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url('/workfluent/twinkling.png') repeat; /* Include pathPrefix */
+  background: url('/workfluent/twinkling.png') repeat; /* Ensure pathPrefix is included */
   animation: move-twink-back 200s linear infinite;
   z-index: 2;
 }
@@ -30,7 +30,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url('/workfluent/clouds.png') repeat; /* Include pathPrefix */
+  background: url('/workfluent/clouds.png') repeat; /* Ensure pathPrefix is included */
   animation: move-clouds-back 200s linear infinite;
   z-index: 3;
 }
