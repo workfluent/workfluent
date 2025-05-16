@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./SpaceBackground.css"; // Ensure the CSS file is imported
+import "./SpaceBackground.css"; // Ensure the CSS file is imported correctly
 
 const SpaceBackground = () => {
   const [isBrowser, setIsBrowser] = useState(false);
