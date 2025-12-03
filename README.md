@@ -10,3 +10,6 @@ This is a starter repository — initial README and MIT license were added.
 - Branch: `main`
 
 Contributions and project structure will be added later.
+
+
+git init
