@@ -1,6 +1,7 @@
 import * as React from "react"
 import { useState, useEffect } from "react"
 import { withPrefix } from "gatsby"
+import { InlineWidget } from "react-calendly"
 
 const projects = [
   {
@@ -49,6 +50,11 @@ export default function Home() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0)
   const [displayedText, setDisplayedText] = useState("")
   const [isDeleting, setIsDeleting] = useState(false)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   useEffect(() => {
     const currentFullText = roles[currentRoleIndex]
@@ -470,6 +476,30 @@ export default function Home() {
               </p>
             </div>
           </form>
+
+          {/* Calendly Booking Section */}
+          <div className="mt-24">
+            <h3 className="text-[32px] font-bold text-center mb-12">Or book a call directly</h3>
+            {isClient && (
+              <div className="rounded-3xl overflow-hidden border border-white/10 bg-zinc-900/50">
+                <InlineWidget
+                  url="https://calendly.com/alielhajj/30min"
+                  styles={{
+                    height: '700px',
+                    width: '100%',
+                    minWidth: '320px'
+                  }}
+                  pageSettings={{
+                    backgroundColor: '000000',
+                    hideEventTypeDetails: false,
+                    hideLandingPageDetails: false,
+                    primaryColor: 'ec4899',
+                    textColor: 'ffffff'
+                  }}
+                />
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
