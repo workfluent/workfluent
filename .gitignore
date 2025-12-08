@@ -12,9 +12,7 @@ __pycache__/
 *.env
 .env
 .env.*
-venv/
 venv.bak/
-.venv/
 *.egg-info/
 build/
 dist/
