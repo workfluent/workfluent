@@ -13,6 +13,7 @@ module.exports = {
     description: 'We craft alternative brands and wicked-fast websites. Let\'s delight your customers and accelerate your business!',
     siteUrl: 'https://workfluent.com',
   },
+  pathPrefix: "/workfluent",
   plugins: [
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',

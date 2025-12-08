@@ -1,26 +1,27 @@
 import * as React from "react"
 import { useState, useEffect } from "react"
+import { withPrefix } from "gatsby"
 
 const projects = [
   {
     "title": "Dentist assistant",
     "description": "The modern dental practice's essential support professional, skilled in patient care, instrument sterilization, and chairside assistance during complex procedures.",
-    "image": "/images/dentist.jpg"
+    "image": "images/dentist.jpg"
   },
   {
     "title": "Personal secretary",
     "description": "The efficient organizational expert who manages schedules, coordinates communications, and handles administrative tasks for high-level executives and busy professionals.",
-    "image": "/images/secretary.jpg"
+    "image": "images/secretary.jpg"
   },
   {
     "title": "International trade broker",
     "description": "The global commerce specialist who facilitates cross-border transactions, navigates complex regulations, and connects suppliers with international buyers across continents.",
-    "image": "/images/trade.jpg"
+    "image": "images/trade.jpg"
   },
   {
     "title": "Real estate broker",
     "description": "The property market expert who negotiates transactions, analyzes market trends, and guides clients through the complexities of buying and selling residential and commercial properties.",
-    "image": "/images/real-estate.jpg"
+    "image": "images/real-estate.jpg"
   },
 
 ]
@@ -169,7 +170,7 @@ export default function Home() {
                 {project.image && (
                   <>
                     <div className="absolute inset-0 z-0">
-                      <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80" />
+                      <img src={withPrefix(project.image)} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80" />
                     </div>
                     <div className="absolute inset-0 bg-black/80 z-10 group-hover:bg-black/70 transition-colors duration-500"></div>
                   </>
