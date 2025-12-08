@@ -82,6 +82,50 @@ export default function Home() {
     return () => clearTimeout(timer)
   }, [displayedText, isDeleting, currentRoleIndex])
 
+  /* Benefit Rotation Logic */
+  const benefits = [
+    "More Money",
+    "Happier Customers",
+    "Higher Efficiency",
+    "Less Staff Hiring",
+    "More Freedom"
+  ]
+  const [currentBenefitIndex, setCurrentBenefitIndex] = useState(0)
+  const [benefitDisplayedText, setBenefitDisplayedText] = useState("")
+  const [isBenefitDeleting, setIsBenefitDeleting] = useState(false)
+
+  useEffect(() => {
+    const currentFullText = benefits[currentBenefitIndex]
+    const words = currentFullText.split(' ')
+
+    let timer
+
+    if (isBenefitDeleting) {
+      // Fade out/Clear effect before switching
+      timer = setTimeout(() => {
+        setIsBenefitDeleting(false)
+        setBenefitDisplayedText("")
+        setCurrentBenefitIndex((prev) => (prev + 1) % benefits.length)
+      }, 1000)
+    } else {
+      // Reveal words one by one
+      const currentWordCount = benefitDisplayedText ? benefitDisplayedText.split(' ').length : 0
+
+      if (currentWordCount < words.length) {
+        timer = setTimeout(() => {
+          setBenefitDisplayedText(words.slice(0, currentWordCount + 1).join(' '))
+        }, 200) // Fast word reveal
+      } else {
+        // Wait before starting to delete/switch
+        timer = setTimeout(() => {
+          setIsBenefitDeleting(true)
+        }, 2000) // Stay visible time
+      }
+    }
+
+    return () => clearTimeout(timer)
+  }, [benefitDisplayedText, isBenefitDeleting, currentBenefitIndex])
+
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       {/* Navbar - Hidden initially, appears on scroll */}
@@ -157,7 +201,7 @@ export default function Home() {
       <section className="py-24 mb-16 px-8 lg:px-12" id="work">
         <div className="max-w-[1400px] mx-auto flex flex-col items-center">
           <br />
-          <h2 className="text-[48px] lg:text-[56px] font-bold tracking-tight mb-16">Our modern solutions for your business</h2>
+          <h2 className="text-[48px] lg:text-[56px] font-bold tracking-tight mb-16">We make solutions for <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">every </span>business</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <div
@@ -201,13 +245,28 @@ export default function Home() {
         <div className="max-w-[900px] mx-auto space-y-24">
           <div className="animate-fade-in">
             <h2 className="text-[42px] lg:text-[52px] font-bold leading-tight tracking-tight mb-6">
-              We're a fan of "first principles" thinking.
+              Business Automation Means
+              <br className="md:hidden" />
+              <span className="inline-block ml-2">
+                {benefits[currentBenefitIndex].split(' ').map((word, wordIndex) => {
+                  const currentWordCount = benefitDisplayedText ? benefitDisplayedText.split(' ').length : 0
+                  const isVisible = wordIndex < currentWordCount
+                  return (
+                    <span
+                      key={`${currentBenefitIndex}-${wordIndex}`}
+                      className={`inline-block mr-3 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 bg-clip-text text-transparent transition-all duration-700 ease-out transform ${isVisible && !isBenefitDeleting ? 'opacity-100 translate-y-0 filter blur-0' : 'opacity-0 translate-y-4 filter blur-sm'
+                        }`}
+                    >
+                      {word}
+                    </span>
+                  )
+                })}
+              </span>
             </h2>
             <p className="text-[18px] lg:text-[20px] text-gray-400 leading-relaxed mb-6">
-              We're here to disrupt the ancient creative agency model with a technique unencumbered by what everyone else is doing wrong. We have respect for those that paved the way, but the truth is they can't keep up with growing consumer expectations and radically accelerating technologies.
-            </p>
+              Because every business is different, we take the time to understand your unique needs and goals in a 1 to 1 conversation. As we listen to your needs and expectations and we tell you about opportunities we think you can capitalize on.           </p>
             <a href="#" className="inline-flex items-center text-[16px] font-semibold text-pink-500 hover:text-pink-400 transition-colors">
-              Learn how we work
+              Learn How We Work
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -216,13 +275,12 @@ export default function Home() {
 
           <div className="animate-fade-in">
             <h2 className="text-[42px] lg:text-[52px] font-bold leading-tight tracking-tight mb-6">
-              Your brand's image is critical. We feel you.
+              State Of The Art Web Applications and Dashboards
             </h2>
             <p className="text-[18px] lg:text-[20px] text-gray-400 leading-relaxed mb-6">
-              Entrusting an agency to design your brand or build your website can make you a bit nervous. We get it. It's an awesome responsibility for an agency to build the bridge between your company and its global audience. That's why we consider the client perspective in everything that we do.
-            </p>
+              We build web applications and dashboards that are fast, secure, and easy to use.            </p>
             <a href="#" className="inline-flex items-center text-[16px] font-semibold text-pink-500 hover:text-pink-400 transition-colors">
-              Learn about the client experience
+              Learn About The Client Experience
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -231,11 +289,10 @@ export default function Home() {
 
           <div className="animate-fade-in">
             <h2 className="text-[42px] lg:text-[52px] font-bold leading-tight tracking-tight mb-6">
-              We got into this to have a blast.
+              Worldwide Coverage and Support In Different Languages
             </h2>
             <p className="text-[18px] lg:text-[20px] text-gray-400 leading-relaxed mb-6">
-              For us that means running a tight ship with a solid crew and leaning into the future of technology. By amplifying our impact, we're able to take a more patient and methodical approach to our work. This forward-thinking mindset opens the space of calm necessary to realize big ideas.
-            </p>
+              We offer support and maintenance for our clients' web applications and dashboards.            </p>
             <a href="#" className="inline-flex items-center text-[16px] font-semibold text-pink-500 hover:text-pink-400 transition-colors">
               Learn how we think
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
