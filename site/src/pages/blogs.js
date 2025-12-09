@@ -83,11 +83,11 @@ export default function Blogs() {
       {/* Header */}
       <header className="relative z-10 py-12 px-8 lg:px-12 border-b border-pink-500/20">
         <div className="max-w-[1400px] mx-auto flex items-center justify-between">
-          <a href="/" className="text-[24px] font-bold tracking-tight hover:opacity-80 transition-opacity">
+          <a href={typeof window !== 'undefined' ? window.__PATH_PREFIX__ + '/' : '/workfluent/'} className="text-[24px] font-bold tracking-tight hover:opacity-80 transition-opacity">
             <span className="text-white">work</span>
             <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">fluent</span>
           </a>
-          <a href="/" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">← Back to Home</a>
+          <a href={typeof window !== 'undefined' ? window.__PATH_PREFIX__ + '/' : '/workfluent/'} className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">← Back to Home</a>
         </div>
       </header>
 
@@ -173,7 +173,7 @@ export default function Blogs() {
           <h2 className="text-[40px] lg:text-[48px] font-bold mb-8 tracking-tight">
             Ready to optimize your <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">workflow?</span>
           </h2>
-          <a href="/#contact" className="group relative bg-gradient-to-r from-pink-500 to-purple-600 text-white px-10 py-4 rounded-full text-[16px] font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] inline-block">
+          <a href={typeof window !== 'undefined' ? window.__PATH_PREFIX__ + '/#contact' : '/workfluent/#contact'} className="group relative bg-gradient-to-r from-pink-500 to-purple-600 text-white px-10 py-4 rounded-full text-[16px] font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] inline-block">
             <span className="relative z-10">Get Started</span>
             <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </a>

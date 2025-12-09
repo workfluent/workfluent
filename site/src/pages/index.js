@@ -168,23 +168,23 @@ export default function Home() {
         <div className="max-w-[1400px] mx-auto px-5">
           <nav className="flex items-center justify-between h-20">
             {/* Logo - 24px */}
-            <a href="/" className="text-[24px] font-bold tracking-tight hover:opacity-80 transition-opacity">
+            <a href={withPrefix("/")} className="text-[24px] font-bold tracking-tight hover:opacity-80 transition-opacity">
               <span className="text-white">work</span>
               <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">fluent</span>
             </a>
 
             {/* Main Menu - 16-18px */}
             <div className="hidden md:flex items-center space-x-10">
-              <a href="#work" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Work</a>
-              <a href="/blogs" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Blog</a>
-              <a href="#services" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Services</a>
-              <a href="#about" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">About</a>
-              <a href="#contact" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Contact</a>
+              <a href={withPrefix("/#work")} className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Work</a>
+              <a href={withPrefix("/blogs")} className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Blog</a>
+              <a href={withPrefix("/#services")} className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Services</a>
+              <a href={withPrefix("/#about")} className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">About</a>
+              <a href={withPrefix("/#contact")} className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Contact</a>
             </div>
 
             {/* CTA Button - Scrolls to Contact */}
             <a
-              href="#contact"
+              href={withPrefix("/#contact")}
               className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 rounded-full text-[16px] font-semibold hover:scale-105 hover:shadow-[0_0_30px_rgba(236,72,153,0.5)] transition-all duration-300"
             >
               Start
