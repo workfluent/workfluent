@@ -157,7 +157,7 @@ export default function Home() {
   }, [benefitDisplayedText, isBenefitDeleting, currentBenefitIndex])
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
       {/* Navbar - Hidden initially, appears on scroll */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform ${scrolled
@@ -559,6 +559,13 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      {/* Bottom Fade Effect */}
+      <div
+        className="pointer-events-none fixed left-0 right-0 bottom-0 h-32 z-50"
+        style={{
+          background: "linear-gradient(to top, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.0) 100%)"
+        }}
+      />
     </div>
   )
 }
