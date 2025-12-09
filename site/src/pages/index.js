@@ -176,7 +176,7 @@ export default function Home() {
             {/* Main Menu - 16-18px */}
             <div className="hidden md:flex items-center space-x-10">
               <a href="#work" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Work</a>
-              <a href="#process" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Blog</a>
+              <a href="/blogs" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Blog</a>
               <a href="#services" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Services</a>
               <a href="#about" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">About</a>
               <a href="#contact" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Contact</a>
