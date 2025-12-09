@@ -157,7 +157,7 @@ export default function Home() {
   }, [benefitDisplayedText, isBenefitDeleting, currentBenefitIndex])
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
+    <div className="min-h-screen text-white overflow-x-hidden relative">
       {/* Navbar - Hidden initially, appears on scroll */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform ${scrolled
@@ -176,7 +176,7 @@ export default function Home() {
             {/* Main Menu - 16-18px */}
             <div className="hidden md:flex items-center space-x-10">
               <a href="#work" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Work</a>
-              <a href="#process" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Process</a>
+              <a href="#process" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Blog</a>
               <a href="#services" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Services</a>
               <a href="#about" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">About</a>
               <a href="#contact" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">Contact</a>
@@ -384,7 +384,7 @@ export default function Home() {
       </section>
 
       {/* Contact Form Section - WorkFluent Style */}
-      <section className="py-32 mb-16 px-8 lg:px-12 bg-gradient-to-t from-black via-purple-950/10 to-black" id="contact">
+      <section className="py-32 mb-16 px-8 lg:px-12 bg-gradient-to-t from-black via-purple-950/10 to-black" id="contact" style={{marginBottom: 0}}>
         <div className="max-w-[800px] mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-[42px] lg:text-[52px] font-bold leading-tight tracking-tight mb-6">
@@ -559,13 +559,13 @@ export default function Home() {
           </div>
         </div>
       </footer>
-      {/* Bottom Fade Effect */}
-      <div
-        className="pointer-events-none fixed left-0 right-0 bottom-0 h-32 z-50"
-        style={{
-          background: "linear-gradient(to top, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.0) 100%)"
-        }}
-      />
+          {/* Bottom Fade Effect */}
+          <div
+            className="pointer-events-none fixed left-0 right-0 bottom-0 h-32 z-50"
+            style={{
+              background: "linear-gradient(to top, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.0) 100%)"
+            }}
+          />
     </div>
   )
 }
