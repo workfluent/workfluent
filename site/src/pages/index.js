@@ -1,34 +1,58 @@
 import * as React from "react"
 import { useState, useEffect } from "react"
-import { withPrefix } from "gatsby"
+import { withPrefix, graphql, useStaticQuery } from "gatsby"
 import { InlineWidget } from "react-calendly"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const projects = [
   {
-    "title": "Dentist assistant",
-    "description": "The modern dental practice's essential support professional, skilled in patient care, instrument sterilization, and chairside assistance during complex procedures.",
-    "image": "images/dentist.jpg"
+    title: "Dentist assistant",
+    description: "The modern dental practice's essential support professional, skilled in patient care, instrument sterilization, and chairside assistance during complex procedures.",
+    image: "dentist.jpg",
+    gradient: "from-pink-500 to-purple-500"
   },
   {
-    "title": "Personal secretary",
-    "description": "The efficient organizational expert who manages schedules, coordinates communications, and handles administrative tasks for high-level executives and busy professionals.",
-    "image": "images/secretary.jpg"
+    title: "Personal secretary",
+    description: "The efficient organizational expert who manages schedules, coordinates communications, and handles administrative tasks for high-level executives and busy professionals.",
+    image: "secretary.jpg",
+    gradient: "from-purple-500 to-cyan-500"
   },
   {
-    "title": "International trade broker",
-    "description": "The global commerce specialist who facilitates cross-border transactions, navigates complex regulations, and connects suppliers with international buyers across continents.",
-    "image": "images/trade.jpg"
+    title: "International trade broker",
+    description: "The global commerce specialist who facilitates cross-border transactions, navigates complex regulations, and connects suppliers with international buyers across continents.",
+    image: "trade.jpg",
+    gradient: "from-cyan-500 to-pink-500"
   },
   {
-    "title": "Real estate broker",
-    "description": "The property market expert who negotiates transactions, analyzes market trends, and guides clients through the complexities of buying and selling residential and commercial properties.",
-    "image": "images/real-estate.jpg"
+    title: "Real estate broker",
+    description: "The property market expert who negotiates transactions, analyzes market trends, and guides clients through the complexities of buying and selling residential and commercial properties.",
+    image: "real-estate.jpg",
+    gradient: "from-pink-500 to-cyan-500"
   },
-
 ]
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false)
+
+  /* Image Query */
+  const data = useStaticQuery(graphql`
+    query {
+      allFile(filter: { sourceInstanceName: { eq: "images" } }) {
+        edges {
+          node {
+            relativePath
+            childImageSharp {
+              gatsbyImageData(
+                width: 800
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
+            }
+          }
+        }
+      }
+    }
+  `)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -209,39 +233,50 @@ export default function Home() {
           <br />
           <h2 className="text-[48px] lg:text-[56px] font-bold tracking-tight mb-16">We make solutions for <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">every </span>business</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className="group relative bg-zinc-900/50 rounded-3xl p-8 border border-white/5 hover:border-white/10 transition-colors duration-500 hover:shadow-2xl cursor-pointer overflow-hidden transform-gpu"
-                style={{
-                  animationDelay: `${index * 100}ms`
-                }}
-              >
-                {project.image && (
-                  <>
-                    <div className="absolute inset-0 z-0">
-                      <img src={withPrefix(project.image)} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80" />
-                    </div>
-                    <div className="absolute inset-0 bg-black/80 z-10 group-hover:bg-black/70 transition-colors duration-500"></div>
-                  </>
-                )}
+            {projects.map((project, index) => {
+              // Find matching image
+              const imageNode = data.allFile.edges.find(edge => edge.node.relativePath === project.image)
+              const image = imageNode ? getImage(imageNode.node) : null
 
-                <div className="relative z-20">
-                  <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${project.gradient} mb-8 group-hover:scale-110 transition-transform duration-500`}></div>
-                  <h3 className="text-[28px] font-bold mb-4 tracking-tight">{project.title}</h3>
-                  <p className="text-[16px] text-gray-400 leading-relaxed mb-8">{project.description}</p>
-                  <a
-                    href="#"
-                    className="inline-flex items-center text-[15px] font-semibold text-pink-500 hover:text-pink-400 transition-colors group-hover:translate-x-1 transform duration-300"
-                  >
-                    Explore project
-                    <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </a>
+              return (
+                <div
+                  key={index}
+                  className="group relative bg-zinc-900/50 rounded-3xl p-8 border border-white/5 hover:border-white/10 transition-colors duration-500 hover:shadow-2xl cursor-pointer overflow-hidden transform-gpu"
+                  style={{
+                    animationDelay: `${index * 100}ms`
+                  }}
+                >
+                  {image && (
+                    <>
+                      <div className="absolute inset-0 z-0">
+                        <GatsbyImage
+                          image={image}
+                          alt={project.title}
+                          className="w-full h-full"
+                          imgClassName="object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80"
+                        />
+                      </div>
+                      <div className="absolute inset-0 bg-black/80 z-10 group-hover:bg-black/70 transition-colors duration-500"></div>
+                    </>
+                  )}
+
+                  <div className="relative z-20">
+                    <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${project.gradient} mb-8 group-hover:scale-110 transition-transform duration-500`}></div>
+                    <h3 className="text-[28px] font-bold mb-4 tracking-tight">{project.title}</h3>
+                    <p className="text-[16px] text-gray-400 leading-relaxed mb-8">{project.description}</p>
+                    <a
+                      href="#"
+                      className="inline-flex items-center text-[15px] font-semibold text-pink-500 hover:text-pink-400 transition-colors group-hover:translate-x-1 transform duration-300"
+                    >
+                      Explore project
+                      <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>
