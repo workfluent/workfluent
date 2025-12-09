@@ -1,8 +1,9 @@
 import * as React from "react"
 import { useState, useEffect } from "react"
-import { withPrefix, graphql, useStaticQuery } from "gatsby"
+import { Link, withPrefix, graphql, useStaticQuery } from "gatsby"
 import { InlineWidget } from "react-calendly"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import ChatBot from "../components/ChatBot"
 
 const projects = [
   {
@@ -33,6 +34,7 @@ const projects = [
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false)
+  const [showStars, setShowStars] = useState(true)
 
   /* Image Query */
   const data = useStaticQuery(graphql`
@@ -57,6 +59,7 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
+      setShowStars(window.scrollY < 400)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -82,7 +85,7 @@ export default function Home() {
 
   useEffect(() => {
     const currentFullText = roles[currentRoleIndex]
-    const words = currentFullText.split(' ')
+    const words = currentFullText.split(' ').filter(word => word !== "")
 
     let timer
 
@@ -126,7 +129,7 @@ export default function Home() {
 
   useEffect(() => {
     const currentFullText = benefits[currentBenefitIndex]
-    const words = currentFullText.split(' ')
+    const words = currentFullText.split(' ').filter(word => word !== "")
 
     let timer
 
@@ -158,6 +161,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-white overflow-x-hidden relative">
+      <ChatBot />
       {/* Navbar - Hidden initially, appears on scroll */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform ${scrolled
@@ -168,10 +172,10 @@ export default function Home() {
         <div className="max-w-[1400px] mx-auto px-5">
           <nav className="flex items-center justify-between h-20">
             {/* Logo - 24px */}
-            <a href={withPrefix("/")} className="text-[24px] font-bold tracking-tight hover:opacity-80 transition-opacity">
+            <Link to="/" className="text-[24px] font-bold tracking-tight hover:opacity-80 transition-opacity">
               <span className="text-white">work</span>
               <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">fluent</span>
-            </a>
+            </Link>
 
             {/* Main Menu - 16-18px */}
             <div className="hidden md:flex items-center space-x-10">
@@ -195,6 +199,9 @@ export default function Home() {
 
       {/* Hero Section - Precise measurements */}
       <section className="relative pt-64 pb-24 mb-16 px-8 lg:px-12">
+        <div className={`absolute inset-0 pointer-events-none ${showStars ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}>
+          <div className="stars"></div>
+        </div>
         <div className="max-w-[1400px] mx-auto flex justify-center">
           <div className="max-w-[1200px] animate-slide-up">
             <h1 className="text-[72px] lg:text-[96px] font-black leading-[0.95] tracking-tighter mb-8">
@@ -576,6 +583,34 @@ export function Head() {
       <html lang="en" />
       <title>WorkFluent - Creative Brand Design and React Development</title>
       <meta name="description" content="We craft alternative brands and wicked-fast websites. Let's delight your customers and accelerate your business!" />
+
+      <style>{`
+        .stars {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: transparent;
+          overflow: hidden;
+        }
+        .stars::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: 
+            radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
+            radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.5), transparent),
+            radial-gradient(2px 2px at 250px 90px, rgba(255,255,255,0.8), transparent),
+            radial-gradient(1px 1px at 400px 50px, rgba(255,255,255,0.9), transparent);
+          background-repeat: repeat;
+          background-size: 400px 100px;
+          opacity: 0.8;
+        }
+      `}</style>
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />

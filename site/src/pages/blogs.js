@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "gatsby";
+import ChatBot from "../components/ChatBot";
 
 const articles = [
   {
@@ -77,17 +79,18 @@ export default function Blogs() {
 
   return (
     <div className="min-h-screen text-white overflow-x-hidden relative" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(20,10,40,0.8) 50%, rgba(0,0,0,0.8) 100%)"}}>
+      <ChatBot />
       {/* Fixed gradient background */}
       <div className="fixed inset-0 pointer-events-none" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(20,10,40,0.8) 50%, rgba(0,0,0,0.8) 100%)", zIndex: -1}}></div>
       
       {/* Header */}
       <header className="relative z-10 py-12 px-8 lg:px-12 border-b border-pink-500/20">
         <div className="max-w-[1400px] mx-auto flex items-center justify-between">
-          <a href={typeof window !== 'undefined' ? window.__PATH_PREFIX__ + '/' : '/workfluent/'} className="text-[24px] font-bold tracking-tight hover:opacity-80 transition-opacity">
+          <Link to="/" className="text-[24px] font-bold tracking-tight hover:opacity-80 transition-opacity">
             <span className="text-white">work</span>
             <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">fluent</span>
-          </a>
-          <a href={typeof window !== 'undefined' ? window.__PATH_PREFIX__ + '/' : '/workfluent/'} className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">← Back to Home</a>
+          </Link>
+          <Link to="/" className="text-[17px] text-white/90 hover:text-white transition-colors duration-200">← Back to Home</Link>
         </div>
       </header>
 
